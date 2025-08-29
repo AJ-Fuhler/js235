@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Fetcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the User Profile Fetcher</h1>
+  <p>Enter a user ID to fetch the profile:</p>
+
+  <form id="userForm">
+    <label>
+      Username:
+      <input type="text" id="usernameInput" placeholder="Enter username">
+    </label>
+
+    <label>
+      Password:
+      <input type="password" id="passwordInput" placeholder="Enter password">
+    </label>
+
+    <button type="submit">Sign in</button>
+  </form>
+
+  <div id="userInfo"></div>
+  <div id="errorMessage" style="color: red; display: none;"></div>
+
+  <!-- External server logic -->
+   <script src="server.js"></script>
+   <script>
+    // handle form submission
+    document.getElementById('userForm').addEventListener('submit', event => {
+      event.preventDefault();
+
+      // reset messages
+      const userInfoDiv = document.getElementById('userInfo');
+      userInfoDiv.textContent = '';
+      const errorMessageDiv = document.getElementById('errorMessage');
+      errorMessageDiv.style.display = 'none';
+
+      // get username and password;
+      let username = document.getElementById('usernameInput').value.trim();
+      let password = document.getElementById('passwordInput').value.trim();
+
+      authenticate(username, password, (errorMessage, userId) => {
+        if (errorMessage) {
+          errorMessageDiv.textContent = `Error: ${errorMessage}`;
+          errorMessageDiv.style.display = 'block';
+        } else {
+          userInfoDiv.textContent = 'Login Successful! Fetching your profile...';
+
+          fetchUserProfile(userId, (errorMessage, userData) => {
+            if (errorMessage) {
+              errorMessageDiv.textContent = `Error: ${errorMessage}`;
+              errorMessageDiv.style.display = 'block';
+            } else {
+              userInfoDiv.textContent = `Welcome ${userData.name}! You are currently ${userData.age} years old!`;
+            }
+          });
+
+        }
+      });
+    });
+   </script>
+</body>
+</html>
