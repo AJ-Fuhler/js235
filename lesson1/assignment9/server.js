@@ -41,3 +41,20 @@ function fetchUserProfile(id, callback) {
     }
   }, 2000);
 }
+
+function retryNTimes(func, n, callback, ...args) {
+  let attempts = 0;
+
+  function attempt() {
+    func(...args, (error, data) => {
+      if (!error || attempts >= n) {
+        callback(error, data);
+      } else {
+        attempts += 1;
+        attempt();
+      }
+    });
+  }
+
+  attempt();
+}
