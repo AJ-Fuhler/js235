@@ -11,6 +11,7 @@ class SlideShow {
     this.slides = document.querySelectorAll('#slides figure');
 
     this.bindEvents();
+    this.hideAllSlidesShowCurrent();
 
   }
 
@@ -63,6 +64,27 @@ class SlideShow {
 
 }
 
+async function handleLikesAndFavoritesClick(event) {
+  event.preventDefault();
+
+  let target = event.target;
+  let id = target.dataset.id;
+  if (!id) return;
+
+  let url = target.getAttribute('href');
+  let response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({photo_id: id}),
+  });
+
+  let json = await response.json();
+  let newTotal = json.total;
+
+  target.textContent = target.textContent.replace(/\d+/g, newTotal);
+}
 
 async function fetchPhotos() {
   let response = await fetch('/photos');
@@ -90,6 +112,25 @@ function renderComments(comments) {
   commentList.innerHTML = templates.comments(comments);
 }
 
+async function submitComment(event) {
+  event.preventDefault();
+
+  let photoId = document.querySelector('#slides figure.show').dataset.id;
+  let formData = new FormData(event.target);
+  formData.set('photo_id', photoId);
+  let queryString = new URLSearchParams(formData);
+  let url = event.target.getAttribute('action');
+  let response = await fetch(url, {
+    method: 'POST',
+    body: queryString,
+  });
+
+  let json = await response.json();
+  let comments = await fetchCommentsFor(json.photo_id);
+  renderComments(comments);
+  event.target.reset();
+}
+
 async function main() {
   photos = await fetchPhotos();
   let activePhotoId = photos[0].id;
@@ -100,7 +141,8 @@ async function main() {
   renderComments(comments);
 
   new SlideShow(activePhotoId);
-
+  document.getElementById('information').addEventListener('click', handleLikesAndFavoritesClick);
+  document.querySelector('form').addEventListener('submit', submitComment);
 }
 
 document.addEventListener('DOMContentLoaded', main);
