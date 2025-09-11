@@ -8,6 +8,7 @@ class SlideShow {
     this.next = document.querySelector('.next');
     this.currentPhotoIndex = photos.indexOf(photos.find(item => item.id === activePhotoId));
     this.currentPhotoId = activePhotoId;
+    this.slides = document.querySelectorAll('#slides figure');
 
     this.bindEvents();
 
@@ -26,6 +27,7 @@ class SlideShow {
     }
 
     this.currentPhotoId = photos[this.currentPhotoIndex].id;
+    this.hideAllSlidesShowCurrent();
     let comments = await fetchCommentsFor(this.currentPhotoId);
     this.updateSlideContent(this.currentPhotoId, comments);
   }
@@ -38,6 +40,7 @@ class SlideShow {
     }
 
     this.currentPhotoId = photos[this.currentPhotoIndex].id;
+    this.hideAllSlidesShowCurrent();
     let comments = await fetchCommentsFor(this.currentPhotoId);
     this.updateSlideContent(this.currentPhotoId, comments);
   }
@@ -45,6 +48,17 @@ class SlideShow {
   updateSlideContent(photoId, comments) {
     renderPhotoInformation(photoId);
     renderComments(comments);
+  }
+
+  hideAllSlidesShowCurrent() {
+    this.slides.forEach(slide => {
+      slide.classList.remove('show', 'hide');
+      if (slide.dataset.id == this.currentPhotoId) {
+        slide.classList.add('show');
+      } else {
+        slide.classList.add('hide');
+      }
+    });
   }
 
 }
