@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Staff Member</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 500px;
+      margin: 40px auto;
+    }
+
+    form {
+      margin: 0 auto;
+    }
+
+    label {
+      display: block;
+      font-size: 20px;
+      color: rgb(181, 54, 54);
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 20px 30px;
+      margin-top: 20px;
+      background-color: rgb(181, 54, 54);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form action="/api/staff_members">
+    <label>
+      Email:
+      <input name="email" id="email">
+    </label>
+    <label>
+      Name:
+      <input name="name" id="name">
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', async event => {
+      event.preventDefault();
+
+      let form = new FormData(event.target);
+      let url = event.target.getAttribute('action');
+      let response = await fetch(url, {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.status === 400) {
+        alert('Staff can not be created. Check your inputs.');
+        return;
+      }
+
+      let json = await response.json();
+      alert(`Successfully created staff with id: ${json.id}`);
+      event.target.reset();
+    })
+  </script>
+</body>
+</html>

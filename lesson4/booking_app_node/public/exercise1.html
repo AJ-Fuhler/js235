@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Available Schedules</title>
+</head>
+<body>
+  <script>
+
+    function alertResults(results) {
+      if (Object.keys(results).length === 0) throw Error('There are currently no schedules available for booking.');
+
+      let logString = '';
+      for (let key of Object.keys(results)) {
+        logString += `${key}: ${results[key]}\n`;
+      }
+
+      alert(logString);
+    }
+
+    async function getSchedules() {
+      try {
+        let results = {};
+        let response = await Promise.race([fetch('/api/schedules'), new Promise((_, reject) => {
+          setTimeout(() => {
+            reject(new Error('Try again later.'));
+          }, 5000)
+        })]);
+        let schedules = await response.json();
+
+        for (let schedule of schedules) {
+          if (!schedule.student_email) {
+            key = `staff ${schedule.staff_id}`;
+            results[key] = results[key] ? results[key] + 1 : 1;
+          }
+        }
+
+        alertResults(results);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        alert('Request completed.');
+      }
+
+    }
+
+    getSchedules();
+  </script>
+</body>
+</html>
