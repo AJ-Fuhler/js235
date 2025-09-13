@@ -55,7 +55,7 @@ async function submitForm(event) {
     });
   }
 
-  let json = JSON.stringify({'schedules': schedules});
+  let json = JSON.stringify({schedules});
   let response = await fetch(form.action, {
     method: 'POST',
     headers: {

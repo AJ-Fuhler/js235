@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Timeslot</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    form {
+      margin-bottom: 30px;
+    }
+
+    legend {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Schedules</h1>
+  </header>
+  <main>
+    <form action="/api/bookings">
+      <label>
+        Please select one schedule
+        <select id="id" name="id"></select>
+      </label>
+      <label>
+        Email:
+        <input type="email" id="student_email" name="student_email">
+      </label>
+      <button type="submit">submit</button>
+    </form>
+    <div id="student_form">
+
+    </div>
+  </main>
+  <script src="exercise4.js"></script>
+</body>
+</html>
