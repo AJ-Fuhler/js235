@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancellation Forms</title>
+  <style>
+    form {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <form id="cancel_booking" action="/api/bookings">
+    <label>
+      Cancel booking:
+      <input type="text" id="booking_id" name="booking_id" placeholder="Enter your booking ID">
+    </label>
+    <button type="submit" id="booking_btn">Submit</button>
+  </form>
+
+  <form id="cancel_schedule" action="/api/schedules">
+    <label>
+      Cancel schedule:
+      <input type="text" id="schedule_id" name="schedule_id" placeholder="Enter your schedule ID">
+    </label>
+    <button type="submit" id="schedule_btn">Submit</button>
+  </form>
+</body>
+</html>
