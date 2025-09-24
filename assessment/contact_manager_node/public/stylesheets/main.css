@@ -1,0 +1,114 @@
+@import url("whitespace-reset.css");
+
+html {
+  font-family: monospace;
+}
+
+body {
+  background-color: rgb(220, 220, 220);
+}
+
+header {
+  padding: 30px;
+  text-align: center;
+  background-image: linear-gradient(to bottom, rgb(95, 48, 95), rgb(143, 67, 143));
+  color: white;
+}
+
+header > h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+header > p {
+  font-size: 18px;
+}
+
+.row-container {
+  width: 80%;
+  margin: 0 auto 20px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  background-image: linear-gradient(to bottom, rgb(190, 190, 190), rgb(203, 203, 203));
+  border-radius: 5px;
+}
+
+.btn {
+  align-self: center;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px rgb(95, 48, 95) solid;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  color: white;
+  background-color: rgb(95, 48, 95);
+}
+
+a {
+  text-decoration: none;
+}
+
+.row-container > input {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.row-container > input:focus {
+  outline: none;
+}
+
+.empty-contacts-placeholder,
+.empty-search-contacts-placeholder {
+  width: 75%;
+  padding: 30px;
+  margin: 0 auto 20px;
+  background-image: linear-gradient(to bottom, rgb(190, 190, 190), rgb(203, 203, 203));
+  text-align: center;
+  border-radius: 5px;
+}
+
+.empty-contacts-placeholder p {
+  margin-bottom: 20px;
+}
+
+.empty-contacts-placeholder > p,
+.empty-search-contacts-placeholder > p {
+  font-size: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+ul {
+  width: 80%;
+  margin: 0 auto 20px;
+}
+
+ul > li {
+  display: inline-block;
+  margin-right: 50px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+dt {
+  font-weight: bold;
+}
+
+form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+form > label {
+  display: block;
+  margin-bottom: 15px;
+}

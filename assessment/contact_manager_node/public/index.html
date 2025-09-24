@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Contact Manager</title>
+  <link rel="stylesheet" href="./stylesheets/main.css">
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/handlebars.js"></script>
+  <script type="module" src="/javascripts/main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+    <p>Created by AJ Fuhler</p>
+  </header>
+  <main>
+    <div class="row-container">
+      <div class="btn-container">
+        <a href="#" class="btn contact-btn" data-type="contact">Add Contact</a>
+        <a href="#" class="btn tag-btn" data-type="tag">Add Tag</a>
+      </div>
+      <input type="text" placeholder="search">
+    </div>
+
+    <ul class="contacts">
+
+    </ul>
+
+    <div class="empty-contacts-placeholder">
+      <p>There is no contacts.</p>
+      <a href="#" class="btn contact-btn" data-type="contact">Add Contact</a>
+    </div>
+
+    <div class="empty-search-contacts-placeholder">
+      <p class="placeholder-text">There is no contacts starting with <span id="search-query"></span>.</p>
+    </div>
+  </main>
+  <form action="/contacts" method="post">
+    <h3>Create a Contact</h3>
+    <label>
+      Full name:
+      <input type="text" name="full-name" id="full-name">
+    </label>
+
+    <label>
+      Email address:
+      <input type="email" name="email" id="email">
+    </label>
+
+    <label>
+      Telephone number:
+      <input type="text" name="phone" id="phone">
+    </label>
+
+    <button type="submit" class="btn">Submit</button>
+    <button class="btn" id="cancel">Cancel</button>
+  </form>
+</body>
+</html>
