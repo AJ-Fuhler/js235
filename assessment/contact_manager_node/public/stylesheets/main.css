@@ -91,8 +91,9 @@ ul {
 }
 
 ul > li {
+  width: 220px;
   display: inline-block;
-  margin-right: 50px;
+  margin: 0 30px 30px;
 }
 
 h3 {
@@ -111,4 +112,8 @@ form {
 form > label {
   display: block;
   margin-bottom: 15px;
+}
+
+form > button {
+  margin-top: 20px;
 }
