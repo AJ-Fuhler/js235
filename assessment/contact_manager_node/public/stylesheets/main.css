@@ -52,13 +52,13 @@ a {
   text-decoration: none;
 }
 
-.row-container > input {
+.row-container > label > input {
   padding: 10px;
   border: none;
   border-radius: 10px;
 }
 
-.row-container > input:focus {
+.row-container > label > input:focus {
   outline: none;
 }
 
@@ -85,12 +85,12 @@ a {
   display: none;
 }
 
-ul {
+.contacts {
   width: 80%;
   margin: 0 auto 20px;
 }
 
-ul > li {
+.contacts > li {
   width: 220px;
   display: inline-block;
   margin: 0 30px 30px;

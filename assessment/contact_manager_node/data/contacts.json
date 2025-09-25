@@ -1,44 +1,30 @@
 [
   {
-    "id": 1,
     "full_name": "Naveed Fuhler",
+    "phone_number": "5071983659",
     "email": "nf@example.com",
-    "phone_number": "12345678901",
-    "tags": "work,friend"
+    "tags": "Friends",
+    "id": 1
   },
   {
-    "id": 2,
-    "full_name": "Victor Reyes",
-    "email": "vpr@example.com",
-    "phone_number": "09876543210",
-    "tags": "work,friend"
-  },
-  {
-    "id": 3,
-    "full_name": "Pete Hanson",
-    "email": "ph@example.com",
-    "phone_number": "54321098761",
-    "tags": null
-  },
-  {
-    "full_name": "AJ",
-    "phone_number": "5073518111",
-    "email": "donnielle.elise11@gmail.com",
-    "tags": "work,friend",
-    "id": 4
+    "full_name": "AJ Fuhler",
+    "phone_number": "50716734678",
+    "email": "fuhlermusic@gmail.com",
+    "tags": "Friends,Work",
+    "id": 2
   },
   {
     "full_name": "Donnie Fuhler",
-    "phone_number": "5075813821",
-    "email": "fuhlermusic@gmail.com",
-    "tags": "work",
-    "id": 5
+    "phone_number": "5071984678",
+    "email": "donnielle.elise11@gmail.com",
+    "tags": "Friends,Work",
+    "id": 3
   },
   {
-    "full_name": "Asher",
-    "phone_number": "50718293787",
-    "email": "aart.fuhler@gmail.com",
-    "tags": "friend",
-    "id": 6
+    "full_name": "Asher Fuhler",
+    "phone_number": "50719836798",
+    "email": "asherfuhler@yoyo.com",
+    "tags": "Work",
+    "id": 4
   }
 ]

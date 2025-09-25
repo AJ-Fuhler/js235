@@ -21,7 +21,15 @@
         <a href="#" class="btn contact-btn" data-type="contact">Add Contact</a>
         <a href="#" class="btn tag-btn" data-type="tag">Add Tag</a>
       </div>
-      <input type="text" placeholder="search">
+      <div class="tags-wrapper">
+        <p>Search by tag:</p>
+        <ul class="tags">
+
+        </ul>
+      </div>
+      <label>Search by name:
+        <input type="text" name="search" id="search" placeholder="search">
+      </label>
     </div>
 
     <ul class="contacts">
@@ -34,7 +42,7 @@
     </div>
 
     <div class="empty-search-contacts-placeholder">
-      <p class="placeholder-text">There is no contacts starting with <span id="search-query"></span>.</p>
+      <p class="placeholder-text">There is no contacts starting with <span id="search-query" style="font-weight: bold;"></span>.</p>
     </div>
   </main>
   <div class="form-placeholder">
